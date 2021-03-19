@@ -1,5 +1,6 @@
 # Collages dataset
-This repository contains the collages dataset described in [Combatting the Simplicity Bias with Diversity for Improved Out-of-Distribution Generalization](https://arxiv.org/abs/????.?????) by Teney et al.
+This repository contains the dataset described in the following paper:
+[Combatting the Simplicity Bias with Diversity for Improved Out-of-Distribution Generalization](https://arxiv.org/abs/????.?????), Teney et al.
 
 <p align="center">
 <img src="preview.png" width="400">
@@ -9,21 +10,22 @@ The task is a binary classification task. Each image is a tiling of four blocks 
 One of two classes of the original datasets appear in each block.
 In the training data, the class in every block is predictive of the collage label.
 We provide four test sets, in which the class of only one of the four blocks is correlated with the label.
+
 The dataset can be used to measure the propensity of a learning algorithm to focus on only parts of the images, resilience to (potentially) spurious patterns, etc.
 It can, for example, replace, the popular Colored-MNIST toy dataset.
 
-Because of the [simplicity bias](https://arxiv.org/abs/2006.07710), training a simple neural network on this dataset produces a model that systematically focus on the MNIST digit while ignoring other parts of the collages, because they are more complex to classify.
+Because of the [simplicity bias](https://arxiv.org/abs/2006.07710), training a simple neural network on this dataset produces a model that **systematically focus on the MNIST digit while ignoring other parts of the collages** because those parts are more complex to classify.
 
 ## Downloads
-We provide *4-block* and *2-block* (MNIST and CIFAR only) versions of the dataset.
-We provide them in *ordered* and *shuffled* version (blocks appearing in random order). The shuffled version can be used to demonstrate that a given method does not rely on a known or constant image structure.
+We provide **4-block** and **2-block** (MNIST and CIFAR only) versions of the dataset.
+We provide them in **ordered** and **shuffled** version (blocks appearing in random order). The shuffled version can be used to demonstrate that a given method does not rely on a known or constant image structure.
 We generated the collages in 1/4th resolution compared to the original datasets (i.e. collages of 16x16 pixels) which enables very fast experimentation.
 Other versions can be generated with the provided script.
 
-- [2 Blocks, ordered, 1/4 image size](collages-2blocks-randomOrder0-downsampling2.zip)
-- [2 Blocks, shuffled, 1/4 image size](collages-2blocks-randomOrder1-downsampling2.zip)
-- [4 Blocks, ordered, 1/4 image size (as used in [this paper](https://arxiv.org/abs/????.?????))](collages-4blocks-randomOrder0-downsampling2.zip)
-- [4 Blocks, shuffled, 1/4 image size](collages-4blocks-randomOrder1-downsampling2.zip)
+- [2-Block collages, ordered, 1/4 image size](collages-2blocks-randomOrder0-downsampling2.zip)
+- [2-Block collages, shuffled, 1/4 image size](collages-2blocks-randomOrder1-downsampling2.zip)
+- [4-Block collages, ordered, 1/4 image size](collages-4blocks-randomOrder0-downsampling2.zip)  (as used in [our paper](https://arxiv.org/abs/????.?????))
+- [4-Block collages, shuffled, 1/4 image size](collages-4blocks-randomOrder1-downsampling2.zip)
 
 ## Generation of the dataset
 The (Matlab script to generate the dataset)[generateCollages.m] is provided in this repository. The script proceeds as follows.
@@ -48,7 +50,6 @@ Please cite the dataset as follows:
   year={2021}
 }
 ```
-Also consider checking out the following paper by Shah et al. that proposed a version of collages with MNIST and CIFAR-10: [The Pitfalls of Simplicity Bias in Neural Networks](https://arxiv.org/abs/2006.07710).
+Also check out the paper by Shah et al. that first proposed 2-block collages of MNIST and CIFAR-10: [The Pitfalls of Simplicity Bias in Neural Networks](https://arxiv.org/abs/2006.07710).
 
-## Contact
-Report any issue with the dataset to [Damien Teney](mailto:contact@damienteney.info).
+Please report any issue to [contact@damienteney.info](mailto:contact@damienteney.info).
