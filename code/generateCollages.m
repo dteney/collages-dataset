@@ -10,7 +10,7 @@ enableDisplay = true;
 %------------------------------------------------------------------------------------------------------
 % Dataset options: uncomment the desired options
 p.randomBlockOrder = false; % Random order in the assembly of the images from the source datasets
-p.randomBlockOrder = true; % Random order in the assembly of the images from the source datasets
+%p.randomBlockOrder = true; % Random order in the assembly of the images from the source datasets
 
 %p.nBlocks = 2; % MNIST + CIFAR-10
 p.nBlocks = 4; % MNIST + CIFAR-10 + Fashing-MNIST + SVHN
@@ -32,7 +32,11 @@ switch p.nBlocks
   case 4, nRows = 2; nCols = 2; blockNames = {'mnist', 'cifar', 'fashion', 'svhn'};
   otherwise, assert(false);
 end
-p.setNames = cat(2, 'train-all', strcat('train-', blockNames, '-forUpperBoundsOnly'), 'val-all', strcat('test-', blockNames));
+p.setNames = cat(2, ...
+  'train-all', ...
+  strcat('train-', blockNames, '-forUpperBoundsOnly'), ...
+  'val-all', ...
+  strcat('test-', blockNames) );
 p.nInstancesPerSet = [repelem(1024*50, 1+p.nBlocks), repelem(1024*10, 1+p.nBlocks)]; % Size of sets (training/test)
 assert(numel(p.setNames) == numel(p.nInstancesPerSet));
 
@@ -109,7 +113,7 @@ end
 
 %------------------------------------------------------------------------------------------------------
 % Generate the collages
-rng(0); % Reset random number generator for reproducibility
+rng(0); % Reset the random number generator for reproducibility
 
 for s = 1 : numel(p.setNames) % For each set
   if startsWith(p.setNames{s}, 'train-') % Training set
@@ -207,7 +211,7 @@ for s = 1 : numel(p.setNames) % For each set
   end
 end % For each set
 
-% Save the options used to generate the dataset in a JSON file
+% Save the dataset options in a JSON file
 fileName = fullfile(outputPath, p.datasetName, 'options.json');
 fid = fopen(fileName, 'w');
 fprintf(fid, jsonencode(p, 'PrettyPrint', true));
