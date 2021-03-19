@@ -10,10 +10,10 @@ enableDisplay = true;
 %------------------------------------------------------------------------------------------------------
 % Dataset options: uncomment the desired options
 p.randomBlockOrder = false; % Random order in the assembly of the images from the source datasets
-%p.randomBlockOrder = true; % Random order in the assembly of the images from the source datasets
+p.randomBlockOrder = true; % Random order in the assembly of the images from the source datasets
 
-p.nBlocks = 2; % MNIST + CIFAR-10
-%p.nBlocks = 4; % MNIST + CIFAR-10 + Fashing-MNIST + SVHN
+%p.nBlocks = 2; % MNIST + CIFAR-10
+p.nBlocks = 4; % MNIST + CIFAR-10 + Fashing-MNIST + SVHN
 
 % Pairs of classes to keep from each source dataset
 p.labelsToKeep{1} = [0 1]; % MNIST: digits 0/1
@@ -21,11 +21,11 @@ p.labelsToKeep{2} = [1 9]; % CIFAR: 1=automobile / 9=truck; 0=airplane, 1=automo
 p.labelsToKeep{3} = [2 4]; % Fashion-MNIST: see https://github.com/zalandoresearch/fashion-mnist/blob/master/doc/img/fashion-mnist-sprite.png
 p.labelsToKeep{4} = [10 1]; % SVHN: digits 0/1
 
-%p.useSmallImages = 0; % Full-size images
-%p.useSmallImages = 1; % 1/2-Size images
-p.useSmallImages = 2; % 1/4-Size images
-%p.useSmallImages = 3; % 1/8-Size images
-%p.useSmallImages = 4; % 1/16-Size images
+%p.downsamplingLevel = 0; % Full-size images
+%p.downsamplingLevel = 1; % 1/2-Size images
+p.downsamplingLevel = 2; % 1/4-Size images
+%p.downsamplingLevel = 3; % 1/8-Size images
+%p.downsamplingLevel = 4; % 1/16-Size images
 
 switch p.nBlocks
   case 2, nRows = 2; nCols = 1; blockNames = {'mnist', 'cifar'};
@@ -36,7 +36,7 @@ p.setNames = cat(2, 'train-all', strcat('train-', blockNames, '-forUpperBoundsOn
 p.nInstancesPerSet = [repelem(1024*50, 1+p.nBlocks), repelem(1024*10, 1+p.nBlocks)]; % Size of sets (training/test)
 assert(numel(p.setNames) == numel(p.nInstancesPerSet));
 
-switch abs(p.useSmallImages)
+switch abs(p.downsamplingLevel)
   case 0, p.dimImage = [nRows*32 nCols*32 1]; % Original images, converted to black and white
   case 1, p.dimImage = [nRows*16 nCols*16 1]; % Downsampled black-and-white images
   case 2, p.dimImage = [nRows*8 nCols*8 1]; % Downsampled black-and-white images
@@ -45,7 +45,7 @@ switch abs(p.useSmallImages)
   otherwise, assert(false);
 end
 
-p.datasetName = sprintf('collages-%gblocks-randomOrder%g-downsampling%g', p.nBlocks, p.randomBlockOrder, p.useSmallImages);
+p.datasetName = sprintf('collages-%gblocks-randomOrder%g-downsampling%g', p.nBlocks, p.randomBlockOrder, p.downsamplingLevel);
 
 %------------------------------------------------------------------------------------------------------
 % Load the original data
@@ -166,7 +166,7 @@ for s = 1 : numel(p.setNames) % For each set
     otherwise, assert(false);
   end
 
-  switch p.useSmallImages
+  switch p.downsamplingLevel
     case 0 % Nothing to do
     % Resize by nearest neighbour
     case 1, imgsCollages = imgsCollages(1:2:end, 1:2:end, :, :);
@@ -212,5 +212,3 @@ fileName = fullfile(outputPath, p.datasetName, 'options.json');
 fid = fopen(fileName, 'w');
 fprintf(fid, jsonencode(p, 'PrettyPrint', true));
 fclose(fid); 
-
-zip(fullfile(outputPath, [p.datasetName '.zip']), fullfile(outputPath, p.datasetName)); % Zip everything

@@ -11,10 +11,10 @@ One of two classes of the original datasets appear in each block.
 In the training data, the class in every block is predictive of the collage label.
 We provide four test sets, in which the class of only one of the four blocks is correlated with the label.
 
-The dataset can be used to measure the propensity of a learning algorithm to focus on only parts of the images, resilience to (potentially) spurious patterns, etc.
-It can, for example, replace, the popular Colored-MNIST toy dataset.
+Because of the simplicity bias (see [Shah et al.](https://arxiv.org/abs/2006.07710)) **a neural network naively trained on this dataset systematically focuses on the MNIST digit while ignoring other parts** of the collages because those parts are more difficult to classify. Therefore the accuracy on three of the four test sets does not raise above chance (50%).
 
-Because of the [simplicity bias](https://arxiv.org/abs/2006.07710), training a simple neural network on this dataset produces a model that **systematically focus on the MNIST digit while ignoring other parts of the collages** because those parts are more complex to classify.
+The dataset can be used to measure the propensity of a learning algorithm to focus only on parts of images, its resilience to (potentially) spurious patterns, etc.
+It can, for example, replace, the popular Colored-MNIST toy dataset.
 
 ## Downloads
 We provide **4-block** and **2-block** (MNIST and CIFAR only) versions of the dataset.
@@ -22,10 +22,10 @@ We provide them in **ordered** and **shuffled** version (blocks appearing in ran
 We generated the collages in 1/4th resolution compared to the original datasets (i.e. collages of 16x16 pixels) which enables very fast experimentation.
 Other versions can be generated with the provided script.
 
-- [2-Block collages, ordered, 1/4 image size](collages-2blocks-randomOrder0-downsampling2.zip)
-- [2-Block collages, shuffled, 1/4 image size](collages-2blocks-randomOrder1-downsampling2.zip)
-- [4-Block collages, ordered, 1/4 image size](collages-4blocks-randomOrder0-downsampling2.zip)  (as used in [our paper](https://arxiv.org/abs/????.?????))
-- [4-Block collages, shuffled, 1/4 image size](collages-4blocks-randomOrder1-downsampling2.zip)
+- [2-Block collages, ordered, 1/4 image size](data/collages-2blocks-randomOrder0-downsampling2.zip)
+- [2-Block collages, shuffled, 1/4 image size](data/collages-2blocks-randomOrder1-downsampling2.zip)
+- [4-Block collages, ordered, 1/4 image size](data/collages-4blocks-randomOrder0-downsampling2.zip)  (as used in [our paper](https://arxiv.org/abs/????.?????))
+- [4-Block collages, shuffled, 1/4 image size](data/collages-4blocks-randomOrder1-downsampling2.zip)
 
 ## Generation of the dataset
 The (Matlab script to generate the dataset)[generateCollages.m] is provided in this repository. The script proceeds as follows.
