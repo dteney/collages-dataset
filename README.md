@@ -8,7 +8,7 @@ The task is a binary classification task. Each image is a tiling of four blocks.
 
 <p align="center">
 <img src="training-preview.png" width="500">
-*Sample training images*
+*Sample training images.*
 </p>
 
 Because of the simplicity bias (see [Shah et al.](https://arxiv.org/abs/2006.07710)) **a neural network naively trained on this dataset systematically focuses on the MNIST digit while ignoring other parts** that are more difficult to classify. Therefore the accuracy on three of the four test sets does not raise above chance (50%).
