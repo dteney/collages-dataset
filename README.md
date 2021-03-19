@@ -7,16 +7,16 @@ The task is a binary classification task. Each image is a tiling of four blocks.
 - In each of **four test sets** the class of only one of the four blocks is correlated with the label.
 
 <p align="center">
-![Sample training images](training-preview.png)*Sample training images*
+<img src="training-preview.png" width="500">*Sample training images*
 </p>
 
 Because of the simplicity bias (see [Shah et al.](https://arxiv.org/abs/2006.07710)) **a neural network naively trained on this dataset systematically focuses on the MNIST digit while ignoring other parts** that are more difficult to classify. Therefore the accuracy on three of the four test sets does not raise above chance (50%).
 
 The dataset can be used to measure the propensity of a learning algorithm to focus only on parts of images, its resilience to (potentially) spurious patterns, etc.
-For some use cases it can replace the popular Colored-MNIST toy data.
+It can replace the popular Colored-MNIST toy data for some use cases.
 
 <p align="center">
-![OOD Testing](testing-ood.png)*OOD Testing as an example use case of the 2-block dataset.*
+<img src="testing-ood.png" width="500">**OOD Testing as an example use case of 2-block collages.*
 </p>
 
 ## Downloads
