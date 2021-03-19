@@ -6,8 +6,6 @@ The task is a binary classification task. Each image is a tiling of four blocks.
 - In the **training data** the class in every block is predictive of the collage label.
 - In each of **four test sets** the class of only one of the four blocks is correlated with the label.
 
-![Sample training images.](training-preview.png)
-
 <p align="center">
 <img src="training-preview.png" width="500"><br>
 <i>Sample training images.</i>
@@ -25,7 +23,7 @@ It can replace the popular Colored-MNIST toy data for some use cases.
 
 ## Downloads
 We provide **4-block** and **2-block** versions (MNIST and CIFAR only) of the dataset.
-We provide **ordered** and **shuffled** version (blocks appearing in random order). The shuffled version can be used to demonstrate that a given method does not rely on a known or constant image structure.
+We provide **ordered** and **shuffled** versions (blocks appearing in random order). The shuffled version can be used to demonstrate that a given method does not rely on a known or constant image structure.
 We generated the collages in 1/4th the resolution of the original datasets (i.e. collages of 16x16 pixels) to enable very fast experimentation.
 Other versions can be generated with the script provided.
 
