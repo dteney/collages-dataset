@@ -6,9 +6,11 @@ The task is a binary classification task. Each image is a tiling of four blocks.
 - In the **training data** the class in every block is predictive of the collage label.
 - In each of **four test sets** the class of only one of the four blocks is correlated with the label.
 
+![Sample training images.](training-preview.png)
+
 <p align="center">
-<img src="training-preview.png" width="500">
-*Sample training images.*
+<img src="training-preview.png" width="500"><br>
+<i>Sample training images.</i>
 </p>
 
 Because of the simplicity bias (see [Shah et al.](https://arxiv.org/abs/2006.07710)) **a neural network naively trained on this dataset systematically focuses on the MNIST digit while ignoring other parts** that are more difficult to classify. Therefore the accuracy on three of the four test sets does not raise above chance (50%).
@@ -17,8 +19,8 @@ The dataset can be used to measure the propensity of a learning algorithm to foc
 It can replace the popular Colored-MNIST toy data for some use cases.
 
 <p align="center">
-<img src="testing-ood.png" width="500">
-*Example use case: OOD testing with 2-block collages.*
+<img src="testing-ood.png" width="500"><br>
+<i>Example use case: OOD testing with 2-block collages.</i>
 </p>
 
 ## Downloads
