@@ -1,7 +1,9 @@
 # Collages dataset
 This repository contains the collages dataset described in [Combatting the Simplicity Bias with Diversity for Improved Out-of-Distribution Generalization](https://arxiv.org/abs/????.?????) by Teney et al.
 
-<img align="center" src="preview.png" width="500">
+<p align="center">
+<img src="preview.png" width="400">
+</p>
 
 The task is a binary classification task. Each image is a tiling of four blocks corresponding to four well-known datasets: MNIST, CIFAR-10, Fashion-MNIST, and SVHN.
 One of two classes of the original datasets appear in each block.
@@ -13,18 +15,18 @@ It can, for example, replace, the popular Colored-MNIST toy dataset.
 Because of the [simplicity bias](https://arxiv.org/abs/2006.07710), training a simple neural network on this dataset produces a model that systematically focus on the MNIST digit while ignoring other parts of the collages, because they are more complex to classify.
 
 ## Downloads
-We provide 4-block and 2-block (MNIST and CIFAR only) versions of the dataset.
-We provide them in ordered and shuffled version (blocks appearing in random order). The shuffled version can be used to demonstrate that a given method does not rely on a known or constant image structure.
+We provide *4-block* and *2-block* (MNIST and CIFAR only) versions of the dataset.
+We provide them in *ordered* and *shuffled* version (blocks appearing in random order). The shuffled version can be used to demonstrate that a given method does not rely on a known or constant image structure.
 We generated the collages in 1/4th resolution compared to the original datasets (i.e. collages of 16x16 pixels) which enables very fast experimentation.
-A script is provided to generate other versions of the dataset
+Other versions can be generated with the provided script.
 
-- (collages-2blocks-randomOrder0-downsampling2.zip)
-- (collages-2blocks-randomOrder1-downsampling2.zip)
-- (collages-4blocks-randomOrder0-downsampling2.zip)
-- (collages-4blocks-randomOrder1-downsampling2.zip)
+- [2 Blocks, ordered, 1/4 image size](collages-2blocks-randomOrder0-downsampling2.zip)
+- [2 Blocks, shuffled, 1/4 image size](collages-2blocks-randomOrder1-downsampling2.zip)
+- [4 Blocks, ordered, 1/4 image size (as used in [this paper](https://arxiv.org/abs/????.?????))](collages-4blocks-randomOrder0-downsampling2.zip)
+- [4 Blocks, shuffled, 1/4 image size](collages-4blocks-randomOrder1-downsampling2.zip)
 
 ## Generation of the dataset
-The Matlab script used to generate the dataset is provided in this repository. The script proceeds as follows.
+The (Matlab script to generate the dataset)[generateCollages.m] is provided in this repository. The script proceeds as follows.
 We use first load images from MNIST, Fashion-MNIST, CIFAR-10, and SVHN.
 The images are converted to grayscale. The images from MNIST and Fashion-MNIST are padded to 32x32 pixels.
 We pre-select two classes from each dataset to be respectively associated with the collages 0 and 1 label.
