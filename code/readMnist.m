@@ -23,15 +23,11 @@ function [imgs, labels] = readMnist(imgFile, labelFile, readDigits, offset, trim
 %    Author: Siddharth Hegde
 
 if ~exist(imgFile, 'file')
-  fprintf('Cannot find file: %s\n', imgFile);
-  imgs = []; labels = [];
-  return;
+  error('Cannot find file: %s\n', imgFile);
 end
 
 if ~exist(labelFile, 'file')
-  fprintf('Cannot find file: %s\n', labelFile);
-  imgs = []; labels = [];
-  return;
+  error('Cannot find file: %s\n', labelFile);
 end
 
 % Read digits

@@ -1,6 +1,6 @@
 # Collages dataset
 This repository contains the dataset described in the paper
-[Combatting the Simplicity Bias with Diversity for Improved Out-of-Distribution Generalization](https://arxiv.org/abs/????.?????) by Teney et al.
+[Evading the Simplicity Bias: Training a Diverse Set of Models Discovers Solutions with Superior OOD Generalization](https://arxiv.org/abs/2105.05612) by Teney et al.
 
 The task is a binary classification task. Each image is a tiling of four blocks. Each block contains one of two classes from well-known datasets: MNIST, CIFAR-10, Fashion-MNIST, and SVHN.
 - In the **training data** the class in every block is predictive of the collage label.
@@ -8,7 +8,7 @@ The task is a binary classification task. Each image is a tiling of four blocks.
 
 <p align="center">
 <img src="training-preview.png" width="500"><br>
-<i>Sample training images.</i>
+<i>Sample training images of 4-block collages.</i>
 </p>
 
 Because of the simplicity bias (see [Shah et al.](https://arxiv.org/abs/2006.07710)) **a neural network naively trained on this dataset systematically focuses on the MNIST digit while ignoring other parts** that are more difficult to classify. Therefore the accuracy on three of the four test sets does not raise above chance (50%).
@@ -49,10 +49,11 @@ We also generate four training sets in this manner to be used solely to obtain u
 ## Citation
 Please cite the dataset as follows:
 ```
-@inproceedings{teney2021combatting,
-  title={Combatting the Simplicity Bias with Diversity for Improved Out-of-Distribution Generalization},
+@article{teney2021combatting,
+  title={Evading the Simplicity Bias: Training a Diverse Set of Models Discovers Solutions with Superior OOD Generalization},
   author={Teney, Damien and Abbasnejad, Ehsan  and Lucey, Simon and van den Hengel, Anton},
-  year={2021}
+  year={2021},
+  journal={arXiv preprint arXiv:2105.05612}
 }
 ```
 Also check out the paper by Shah et al. that first proposed 2-block collages of MNIST and CIFAR-10:

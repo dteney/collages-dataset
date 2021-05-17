@@ -68,13 +68,14 @@ end
 
 fprintf('Loading CIFAR-10...\n');
 [imgsLoaded{2, 1}, labelsLoaded{2, 1}, imgsLoaded{2, 2}, labelsLoaded{2, 2}] = readCifar10(inputPath);
-for trTe = 1:2, labelsLoaded{2, trTe} = double(labelsLoaded{2, trTe}); end % Turn CIFAR category names to class indices
+for trTe = 1:2
+  labelsLoaded{2, trTe} = double(labelsLoaded{2, trTe}); % Turn CIFAR category names to class indices
+end
 
 if p.nBlocks == 4
   fprintf('Loading Fashion-MNIST...\n');
   fileNames = fullfile(inputPath, {'fashion-mnist-train-images.idx3-ubyte', 'fashion-mnist-train-labels.idx1-ubyte'; 'fashion-mnist-t10k-images.idx3-ubyte', 'fashion-mnist-t10k-labels.idx1-ubyte'});
   nTr = 60000; nTe = 10000;
-  imgsFashion = cell(1, 2); labelsFashion = cell(1, 2);
   [imgsLoaded{3, 1}, labelsLoaded{3, 1}] = readMnist(fileNames{1, 1}, fileNames{1, 2}, nTr, 0, false); % Load training data
   [imgsLoaded{3, 2}, labelsLoaded{3, 2}] = readMnist(fileNames{2, 1}, fileNames{2, 2}, nTe, 0, false); % Load test data
   for trTe = 1:2 % Pad images to 32x32x3 (CIFAR dimensions)
@@ -113,7 +114,7 @@ end
 
 %------------------------------------------------------------------------------------------------------
 % Generate the collages
-rng(0); % Reset the random number generator for reproducibility
+rng(0, 'threefry'); % Reset the random number generator for reproducibility
 
 for s = 1 : numel(p.setNames) % For each set
   if startsWith(p.setNames{s}, 'train-') % Training set
@@ -123,6 +124,8 @@ for s = 1 : numel(p.setNames) % For each set
   end
 
   % Decide which images to combine, depending on the set
+  idsClass0 = cell(1, p.nBlocks);
+  idsClass1 = cell(1, p.nBlocks);
   for c = 1 : p.nBlocks
     idsClass0{c} = find(labelsLoaded{c, trTe} == 0); % By default: use predicive images
     idsClass1{c} = find(labelsLoaded{c, trTe} == 1);

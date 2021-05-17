@@ -27,9 +27,7 @@ function [imgs, labels] = loadBatchAsFourDimensionalArray(location, batchFileNam
   imgs = tmp.data';
   imgs = reshape(imgs, 32,32,3,[]);
   imgs = permute(imgs, [2 1 3 4]);
-  %tmp2 = load(fullfile(location,'batches.meta.mat'));
-  %labels = categorical(tmp.labels, 0:9, tmp2.label_names); % Convert class IDs to categorical labels
-  labels = tmp.labels; % Keep class IDs (integers in 0:9)
+  labels = tmp.labels; % Class IDs: integers in 0:9
 end
 
 end
