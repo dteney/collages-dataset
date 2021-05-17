@@ -1,11 +1,15 @@
-function generateCollages()
-%GENERATEDATACOLLAGESIMAGES Stand-alone script to generate dataset of collages.
+function generateCollages(inputPath, outputPath, enableDisplay)
+%GENERATEDATACOLLAGESIMAGES Stand-alone function to generate dataset of collages.
 
 %   Author: Damien Teney
 
-inputPath = 'C:\Data\vqa\data-collages'; % Where to find MNIST, CIFAR-10, etc.
-outputPath = '.'; % Where to save the collages
-enableDisplay = true;
+if ~nargin % No given parameters: set default values
+  inputPath = 'C:\Data\data-collages'; % Where to find MNIST, CIFAR-10, etc.
+  outputPath = '.'; % Where to save the collages
+  enableDisplay = true;
+else
+  assert(nargin == 3);
+end
 
 %------------------------------------------------------------------------------------------------------
 % Dataset options: uncomment the desired options

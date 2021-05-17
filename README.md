@@ -1,6 +1,6 @@
 # Collages dataset
-This repository contains the dataset described in the paper
-[Evading the Simplicity Bias: Training a Diverse Set of Models Discovers Solutions with Superior OOD Generalization](https://arxiv.org/abs/2105.05612) by Teney et al.
+This repository contains the dataset described in the following paper by Teney et al. 
+[Evading the Simplicity Bias: Training a Diverse Set of Models Discovers Solutions with Superior OOD Generalization](https://arxiv.org/abs/2105.05612).
 
 The task is a binary classification task. Each image is a tiling of four blocks. Each block contains one of two classes from well-known datasets: MNIST, CIFAR-10, Fashion-MNIST, and SVHN.
 - In the **training data** the class in every block is predictive of the collage label.
@@ -29,7 +29,7 @@ Other versions can be generated with the script provided.
 
 - [2-Block collages, ordered, 1/4 image size](data/collages-2blocks-randomOrder0-downsampling2.zip) (~73MB)
 - [2-Block collages, shuffled, 1/4 image size](data/collages-2blocks-randomOrder1-downsampling2.zip) (~73MB)
-- [4-Block collages, ordered, 1/4 image size](data/collages-4blocks-randomOrder0-downsampling2.zip) (~161MB) (as used in [our paper](https://arxiv.org/abs/????.?????))
+- [4-Block collages, ordered, 1/4 image size](data/collages-4blocks-randomOrder0-downsampling2.zip) (~161MB) (as used in [our paper](https://arxiv.org/abs/2105.05612))
 - [4-Block collages, shuffled, 1/4 image size](data/collages-4blocks-randomOrder1-downsampling2.zip) (~161MB)
 
 ## Generation of the dataset
@@ -49,7 +49,7 @@ We also generate four training sets in this manner to be used solely to obtain u
 ## Citation
 Please cite the dataset as follows:
 ```
-@article{teney2021combatting,
+@article{teney2021evading,
   title={Evading the Simplicity Bias: Training a Diverse Set of Models Discovers Solutions with Superior OOD Generalization},
   author={Teney, Damien and Abbasnejad, Ehsan  and Lucey, Simon and van den Hengel, Anton},
   year={2021},
